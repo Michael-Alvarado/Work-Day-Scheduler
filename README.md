@@ -12,7 +12,7 @@
 
 ## Description <a name = "Description"></a>
 
-Challenge was to create a single day scheduler to keep track of tasks or to-do items that day to help manage time effectively. Required use of moment.js and other third-party APIs to complete. Javascript written from scratch. 
+Challenge was to create a single day scheduler to keep track of tasks or to-do items that day to help manage time effectively. Input fields display gray if the timeblock is in the past, red if it's the current hour, and green if it's in the future. Required use of moment.js and other third-party APIs to complete. Javascript written from scratch. 
 
 ## Links <a name = "Links"></a>
 
