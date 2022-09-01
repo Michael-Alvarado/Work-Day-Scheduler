@@ -39,7 +39,7 @@ for (var i=0; i<workHours.length; i++) {
     // Creating the button for the form and assigning it the saveBtn class and a unique ID
     var saveBlock = document.createElement('button');
     saveBlock.classList.add('saveBtn');
-    saveBlock.setAttribute('id', workHours[i] + 'Button');
+    saveBlock.setAttribute('id', workHours[i]);
     // Creating the icon for the save button and appending it to the button
     var saveIcon = document.createElement('i');
     saveIcon.classList.add('fas', 'fa-save');
@@ -58,96 +58,19 @@ for (var i=0; i<workHours.length; i++) {
 init();
 
 // Button variables to add Event Listeners to
-const nineBtn = document.getElementById('9AMButton');
-const tenBtn = document.getElementById('10AMButton');
-const elevenBtn = document.getElementById('11AMButton');
-const twelveBtn = document.getElementById('12PMButton');
-const oneBtn = document.getElementById('1PMButton');
-const twoBtn = document.getElementById('2PMButton');
-const threeBtn = document.getElementById('3PMButton');
-const fourBtn = document.getElementById('4PMButton');
-const fiveBtn = document.getElementById('5PMButton');
+let saveBtn = document.getElementsByClassName('saveBtn');
 
-// Adding Event Listeners to save buttons and storing content to local storage
-nineBtn.addEventListener('click', function(event) {
-    event.preventDefault();
-
-    var inputEl = document.getElementById('9AMInput');
-
-    localStorage.setItem('9AM', inputEl.value.trim());
+Array.from(saveBtn).forEach(function(element) {
+    element.addEventListener('click', function(event) {
+        event.preventDefault();
+        eventList(event);
+    });
 });
 
-// Adding Event Listeners to save buttons and storing content to local storage
-tenBtn.addEventListener('click', function(event) {
-    event.preventDefault();
-
-    var inputEl = document.getElementById('10AMInput');
-
-    localStorage.setItem('10AM', inputEl.value.trim());
-});
-
-// Adding Event Listeners to save buttons and storing content to local storage
-elevenBtn.addEventListener('click', function(event) {
-    event.preventDefault();
-
-    var inputEl = document.getElementById('11AMInput');
-
-    localStorage.setItem('11AM', inputEl.value.trim());
-});
-
-// Adding Event Listeners to save buttons and storing content to local storage
-twelveBtn.addEventListener('click', function(event) {
-    event.preventDefault();
-
-    var inputEl = document.getElementById('12PMInput');
-
-    localStorage.setItem('12PM', inputEl.value.trim());
-});
-
-// Adding Event Listeners to save buttons and storing content to local storage
-oneBtn.addEventListener('click', function(event) {
-    event.preventDefault();
-
-    var inputEl = document.getElementById('1PMInput');
-
-    localStorage.setItem('1PM', inputEl.value.trim());
-});
-
-// Adding Event Listeners to save buttons and storing content to local storage
-twoBtn.addEventListener('click', function(event) {
-    event.preventDefault();
-
-    var inputEl = document.getElementById('2PMInput');
-
-    localStorage.setItem('2PM', inputEl.value.trim());
-});
-
-// Adding Event Listeners to save buttons and storing content to local storage
-threeBtn.addEventListener('click', function(event) {
-    event.preventDefault();
-
-    var inputEl = document.getElementById('3PMInput');
-
-    localStorage.setItem('3PM', inputEl.value.trim());
-});
-
-// Adding Event Listeners to save buttons and storing content to local storage
-fourBtn.addEventListener('click', function(event) {
-    event.preventDefault();
-
-    var inputEl = document.getElementById('4PMInput');
-
-    localStorage.setItem('4PM', inputEl.value.trim());
-});
-
-// Adding Event Listeners to save buttons and storing content to local storage
-fiveBtn.addEventListener('click', function(event) {
-    event.preventDefault();
-
-    var inputEl = document.getElementById('5PMInput');
-
-    localStorage.setItem('5PM', inputEl.value.trim());
-});
+function eventList (element) {
+    var valueToPush = element.path[2][0].value;
+    localStorage.setItem(element.path[1].id, valueToPush.trim());
+}
 
 // Function to pull content from local storage from previous visit(s)
 function init() {
