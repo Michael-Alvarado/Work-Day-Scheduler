@@ -57,9 +57,10 @@ for (var i=0; i<workHours.length; i++) {
 // Calling function that preloads any saved content in local storage
 init();
 
-// Button variables to add Event Listeners to
+// Button variable to add Event Listeners to
 let saveBtn = document.getElementsByClassName('saveBtn');
 
+// Adding event listener to each button in the array
 Array.from(saveBtn).forEach(function(element) {
     element.addEventListener('click', function(event) {
         event.preventDefault();
@@ -67,6 +68,7 @@ Array.from(saveBtn).forEach(function(element) {
     });
 });
 
+// Function to push input to local storage
 function eventList (element) {
     var valueToPush = element.path[2][0].value;
     localStorage.setItem(element.path[1].id, valueToPush.trim());
