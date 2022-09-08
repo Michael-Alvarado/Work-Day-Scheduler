@@ -70,8 +70,9 @@ Array.from(saveBtn).forEach(function(element) {
 
 // Function to push input to local storage
 function eventList (element) {
-    var valueToPush = element.path[2][0].value;
-    localStorage.setItem(element.path[1].id, valueToPush.trim());
+    const path = element.composedPath();
+    var valueToPush = path[2][0].value;
+    localStorage.setItem(path[1].id, valueToPush.trim());
 }
 
 // Function to pull content from local storage from previous visit(s)
